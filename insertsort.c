@@ -1,35 +1,37 @@
-int v[10], i, j;
+#include <stdio.h>
+
+int tamanho = 10, i, v[10];
+
+void insertSort(int v[], int tamanho);
 
 int main()
 {
-    for(i=0; i<10; i++)
+    printf("Digite os números que você deseja ordenar: ");
+
+    for(i=0;i<tamanho;i++)
     {
         scanf("%d", &v[i]);
     }
-    insertion_sort(v, 10);
-    for(i=0; i<10; i++)
+    insertSort(v, tamanho);
+    for(i=0;i<tamanho;i++)
     {
-        print("%d", v[i]);
-    }
-
+        printf("%d ", v[i]);
+    }  
     return 0;
 }
 
-int insertion_sort (int v[], int size)
+void insertSort(int v[], int tamanho)
 {
-    int i, j, elect;
-    for(i=1; i<size-1; i++)
+    int i, j, nume;
+    for(i=1; i<tamanho; i++)
     {
-        elect = v[i];
+        nume = v[i];
         j = i-1;
-        while ((j>=0) && (elect < v[j]))
+        while (j>=0 && v[j]>nume)
         {
             v[j+1] = v[j];
             j = j-1;
         }
-        if(j!=(i-1))
-        {
-            v[j+1] = elect;
-        }
+        v[j+1] = nume;
     }
 }
